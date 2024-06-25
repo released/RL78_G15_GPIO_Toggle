@@ -42,6 +42,8 @@ volatile unsigned int btn_counter_tick = 0;
 #define cLED5                                           (P0_bit.no5)
 #define cLED6                                           (P0_bit.no2)
 
+// #define ENABLE_GPIO_REVERSE
+
 /*_____ M A C R O S ________________________________________________________*/
 
 /*_____ F U N C T I O N S __________________________________________________*/
@@ -148,6 +150,24 @@ void Timer_1ms_IRQ(void)
     // Button_Process_long_counter();
 }
 
+
+void LED_Default_reverse(void)
+{
+    //P22
+    cLED1 = 1;//P2_bit.no2 = 0;
+    //P23
+    cLED2 = 1;//P2_bit.no3 = 0;
+    //P07
+    cLED3 = 1;//P0_bit.no7 = 0;
+    //P06
+    cLED4 = 1;//P0_bit.no6 = 0;
+    //P05
+    cLED5 = 1;//P0_bit.no5 = 0;
+    //P02
+    cLED6 = 1;//P0_bit.no2 = 0;
+}
+
+
 void LED_Default(void)
 {
     //P22
@@ -177,25 +197,53 @@ void LED_state_machine(void)
         switch(state_idx)
         {
             case 0:
+                #if defined (ENABLE_GPIO_REVERSE)
+                LED_Default_reverse();
+                #else
                 LED_Default();
+                #endif
                 break;                
             case 1:
+                #if defined (ENABLE_GPIO_REVERSE)
+                cLED1 = 0;
+                #else
                 cLED1 = 1;
+                #endif
                 break;                
             case 2:
+                #if defined (ENABLE_GPIO_REVERSE)
+                cLED2 = 0;
+                #else
                 cLED2 = 1;
+                #endif
                 break;                
             case 3:
+                #if defined (ENABLE_GPIO_REVERSE)
+                cLED3 = 0;
+                #else
                 cLED3 = 1;
+                #endif
                 break;                
             case 4:
+                #if defined (ENABLE_GPIO_REVERSE)
+                cLED4 = 0;
+                #else
                 cLED4 = 1;
+                #endif
                 break;                
             case 5:
+                #if defined (ENABLE_GPIO_REVERSE)
+                cLED5 = 0;
+                #else
                 cLED5 = 1;
+                #endif
                 break;                
             case 6:
+                #if defined (ENABLE_GPIO_REVERSE)
+                cLED6 = 0;
+                #else
                 cLED6 = 1;
+                #endif
                 break;
         }
 
