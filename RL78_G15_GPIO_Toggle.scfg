@@ -652,11 +652,11 @@
                 <item enabled="true" id="E2"/>
                 <item enabled="true" id="E2lite"/>
             </option>
-            <option enabled="true" id="pseudo" selection="used">
+            <option enabled="true" id="pseudo" selection="unused">
                 <item enabled="true" id="unused"/>
                 <item enabled="true" id="used"/>
             </option>
-            <option enabled="true" id="startstopfunction" selection="unused">
+            <option enabled="true" id="startstopfunction" selection="used">
                 <item enabled="true" id="unused"/>
                 <item enabled="true" id="used"/>
             </option>
